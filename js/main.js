@@ -13,13 +13,14 @@ canvas.height = HEIGHT;
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-// document.oncontextmenu = function(event) {
-//    event.preventDefault();
-// }
 
 /*
 Actual Game Variables
 */
+
+var mouseDown = false;
+var mouseX = 0;
+var mouseY = 0;
 
 /*
 Functions, but should be more general management functions and 
