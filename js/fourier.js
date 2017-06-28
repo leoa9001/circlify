@@ -23,8 +23,8 @@ function getCircles(points){
 }
 
 function toPolar(z){
-	var re = math.sqrt(math.re*math.re + math.im*math.im);
-	var the = math.atan2(math.im,math.re);
+	var re = math.sqrt(math.re(z)*math.re(z) + math.im(z)*math.im(z));
+	var the = math.atan2(math.im(z),math.re(z));
 
 	return {r:re, th:the};
 }
