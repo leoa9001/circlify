@@ -36,6 +36,7 @@ function drawCircles(circles) {
 		startX = newX;
 		startY = newY;
 	}
+
 }
 
 
@@ -56,7 +57,7 @@ function drawFrame(circles, frame, frames){
 		startX = newX;
 		startY = newY;
 	}
-
+	return {x: startX, y: startY};
 }
 
 // function drawCircle(x, y, [[r, th], [r, th]]);

@@ -17,6 +17,7 @@ var lastPos = {x: 0, y: 0};
 var pos = {x: 0, y: 0};
 
 var positions = [];
+var drawnPoints = [];
 
 var animateCircles = false;
 var frameNum = -1;
@@ -119,8 +120,17 @@ function Update() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         frameNum++;
         var circles = getCircles(positions);
-        frameNum %= circles.length * 10;
-        drawFrame(circles, frameNum, 10 * circles.length);
+        frameNum %= circles.length;
+        var lastCirclePos = drawFrame(circles, frameNum, circles.length);
+        drawnPoints.push(lastCirclePos);
+
+        for (var i = 0; i < drawnPoints.length; i++) {
+            ctx.beginPath();
+            ctx.arc(drawnPoints[i].x, drawnPoints[i].y, 4, 0, 2 * Math.PI, false);
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            ctx.closePath();
+        }
     }
 }
 
