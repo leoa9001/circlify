@@ -18,6 +18,9 @@ var pos = {x: 0, y: 0};
 
 var positions = [];
 
+var animateCircles = false;
+var frameNum = -1;
+
 /*
 HTML Setup Stuff
 */
@@ -85,8 +88,7 @@ function keyDownHandler(e) {
 
     //65 is a
     if (e.keyCode == 65) {
-        var circles = getCircles(positions);
-        drawCircles(circles);
+        animateCircles = true;
     }
 }
 
@@ -111,6 +113,14 @@ function Update() {
 
         positions.push(math.complex(pos.x, pos.y));
         lastPos = {x: pos.x, y: pos.y};
+    }
+
+    if (animateCircles) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        frameNum++;
+        var circles = getCircles(positions);
+        frameNum %= circles.length * 10;
+        drawFrame(circles, frameNum, 10 * circles.length);
     }
 }
 
