@@ -15,11 +15,18 @@ function getCircles(points){
 	circles = [];
 
 	for(var i = 0; i < points.length;i++){
-		var pti = math.toPolar(fourierDecomp[i]);
+		var pti = toPolar(fourierDecomp[i]);
 		circles.push({r:pti.r, th:pti.phi});
 	}
 
 	return circles;
+}
+
+function toPolar(z){
+	var re = math.sqrt(math.re*math.re + math.im*math.im);
+	var the = math.atan2(math.im,math.re);
+
+	return {r:re, th:the};
 }
 
 
