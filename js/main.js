@@ -90,6 +90,8 @@ function keyUpHandler(e) {
 function Update() {
     // ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    drawCircle(100, 100, 40, 1.4);
+
     if (mouseDown) {
         ctx.beginPath();
         ctx.moveTo(lastPos.x, lastPos.y);
