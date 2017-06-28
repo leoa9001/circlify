@@ -2,6 +2,10 @@
 Constants
 */
 
+var FPS = 12;
+var WIDTH = 640;
+var HEIGHT = 480;
+
 /*
 HTML Setup Stuff
 */
@@ -13,6 +17,19 @@ canvas.height = HEIGHT;
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+
+canvas.addEventListener("mousemove", function (e) {
+    console.log("mouse move");
+}, false);
+canvas.addEventListener("mousedown", function (e) {
+    console.log("mouse down");
+}, false);
+canvas.addEventListener("mouseup", function (e) {
+    console.log("mouse up");
+}, false);
+canvas.addEventListener("mouseout", function (e) {
+    console.log("mouse out");
+}, false);
 
 /*
 Actual Game Variables
