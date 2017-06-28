@@ -76,6 +76,12 @@ function keyDownHandler(e) {
         }
         console.log("_________________________________");
     }
+
+    //69 is e
+    if (e.keyCode == 69) {
+        var circles = getCircles(positions);
+        drawCircles(circles);
+    }
 }
 
 function keyUpHandler(e) {
@@ -88,10 +94,6 @@ function keyUpHandler(e) {
 }
 
 function Update() {
-    // ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    drawCircle(100, 100, 40, 1.4);
-
     if (mouseDown) {
         ctx.beginPath();
         ctx.moveTo(lastPos.x, lastPos.y);

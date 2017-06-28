@@ -16,7 +16,7 @@ function getCircles(points){
 
 	for(var i = 0; i < points.length;i++){
 		var pti = math.toPolar(fourierDecomp[i]);
-		circles.push({r:pti.r, th:pti.phi});
+		circles.push({r: pti.r, th: pti.phi});
 	}
 
 	return circles;
