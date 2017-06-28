@@ -82,6 +82,12 @@ function keyDownHandler(e) {
         var circles = getCircles(positions);
         drawCircles(circles);
     }
+
+    //65 is a
+    if (e.keyCode == 65) {
+        var circles = getCircles(positions);
+        drawCircles(circles);
+    }
 }
 
 function keyUpHandler(e) {

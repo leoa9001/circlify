@@ -38,6 +38,27 @@ function drawCircles(circles) {
 	}
 }
 
+
+//frame is the ith output... out of frames: frames = number of divisions of time for one rotation of C_1
+function drawFrame(circles, frame, frames){
+	var cir = circles[0];
+	var startX = cir.r * Math.cos(cir.th);
+	var startY = cir.r * Math.sin(cir.th);
+
+
+	for (var i = 1; i < circles.length; i++) {
+		var c = circles[i];
+		console.log(c.r + " " + c.th);
+		drawCircle(startX, startY, c.r, c.th);
+
+		var newX = startX + c.r * Math.cos(c.th+2*math.pi*i*frame/frames);
+		var newY = startY + c.r * Math.sin(c.th+2*math.pi*i*frame/frames);
+		startX = newX;
+		startY = newY;
+	}
+
+}
+
 // function drawCircle(x, y, [[r, th], [r, th]]);
 
 [{r: 0.5, th: 72}, {r: 0.6, th: 33}];
