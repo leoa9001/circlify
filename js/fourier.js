@@ -16,7 +16,7 @@ function getCircles(points){
 
 	for(var i = 0; i < points.length;i++){
 		var pti = toPolar(fourierDecomp[i]);
-		circles.push({r:pti.r, th:pti.phi});
+		circles.push({r:pti.r, th:pti.th});
 	}
 
 	return circles;
@@ -25,6 +25,8 @@ function getCircles(points){
 function toPolar(z){
 	var re = math.sqrt(math.re(z)*math.re(z) + math.im(z)*math.im(z));
 	var the = math.atan2(math.im(z),math.re(z));
+
+	console.log("Leo is a" + " " + the);
 
 	return {r:re, th:the};
 }
