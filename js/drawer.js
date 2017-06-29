@@ -50,10 +50,10 @@ function drawFrame(circles, frame, frames){
 	for (var i = 1; i < circles.length; i++) {
 		var c = circles[i];
 		console.log(c.r + " " + c.th);
-		drawCircle(startX, startY, c.r, c.th+2*math.pi*i*frame/frames);
+		drawCircle(startX, startY, c.r, c.th-2*math.pi*i*frame/frames);
 
-		var newX = startX + c.r * Math.cos(c.th+2*math.pi*i*frame/frames);
-		var newY = startY + c.r * Math.sin(c.th+2*math.pi*i*frame/frames);
+		var newX = startX + c.r * Math.cos(c.th-2*math.pi*i*frame/frames);
+		var newY = startY + c.r * Math.sin(c.th-2*math.pi*i*frame/frames);
 		startX = newX;
 		startY = newY;
 	}
