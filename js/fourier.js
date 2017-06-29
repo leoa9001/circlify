@@ -9,8 +9,8 @@
 
 function getCircles(points){
 	//we're using omega = e^2pi i/N rather than e^-pi i/N and taking 1/N 
-	fourierDecomp = slowDFT(points, 1/points.length, math.pow(math.e,math.complex(0,2*math.pi/points.length)));
-	circles = [];
+	var fourierDecomp = slowDFT(points, 1/points.length, math.pow(math.e,math.complex(0,2*math.pi/points.length)));
+	var circles = [];
 
 	for(var i = 0; i < points.length;i++){
 		var pti = toPolar(fourierDecomp[i]);
@@ -20,11 +20,11 @@ function getCircles(points){
 	return circles;
 }
 
-
-function slowDFT(points, leadCoef,omega){
+//General n^2 time DFT which works for any n.
+function slowDFT(points, leadCoef, omega){
 	//add assert omega^N = 1
 	var N = points.length;
-	ck = []
+	var ck = []
 	for(var k = 0; k < N; k++){
 		sum = math.complex(0,0);
 		for(var j = 0; j < N;j++){
@@ -38,6 +38,28 @@ function slowDFT(points, leadCoef,omega){
 
 	return ck;
 }
+
+
+// Cooley-Tukey FFT which works for N a power of 2 (does not do padding)
+function FFT(points, omega){
+	//add assert N is a power of 2 and omega^N = 1
+	var N = points.length;
+	if(N==1)return points;
+	var pts0 = [];
+	var pts1 = [];
+
+	for(var j = 0; j < N/2;j++){
+		pts0.push(points[2*j]);
+		pts1.push(points[2*j+1]);
+	}
+
+	var ft0 = FFT(pts0,omega*omega);
+	var ft1 = FFT(pts1,omega*omega);
+
+	omegaCurr
+
+}
+
 
 function toPolar(z){
 	var re = math.sqrt(math.re(z)*math.re(z) + math.im(z)*math.im(z));
