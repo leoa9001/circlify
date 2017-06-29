@@ -40,6 +40,7 @@ canvas.addEventListener("mousemove", function (e) {
     pos = {x: e.clientX, y: e.clientY};
 
 }, false);
+
 canvas.addEventListener("mousedown", function (e) {
     // console.log("mouse down");
     clearScreen();
@@ -47,10 +48,12 @@ canvas.addEventListener("mousedown", function (e) {
     positions.push(math.complex(e.clientX, e.clientY));
     mouseDown = true;
 }, false);
+
 canvas.addEventListener("mouseup", function (e) {
     // console.log("mouse up");
     mouseDown = false;
 }, false);
+
 canvas.addEventListener("mouseout", function (e) {
     // console.log("mouse out");
 }, false);

@@ -1,12 +1,10 @@
 
 
-var a = math.complex(-3,2)
 
 //document.getElementById("jsTestThing").innerHTML = slowDFT([math.complex(1,0),math.complex(1,0),math.complex(1,0),math.complex(1,0)] ,1 , math.complex(0,1))
 
-function DFT(){
-	
-}
+
+
 
 
 function getCircles(points){
@@ -20,15 +18,6 @@ function getCircles(points){
 	}
 
 	return circles;
-}
-
-function toPolar(z){
-	var re = math.sqrt(math.re(z)*math.re(z) + math.im(z)*math.im(z));
-	var the = math.atan2(math.im(z),math.re(z));
-
-	console.log("Leo is a" + " " + the);
-
-	return {r:re, th:the};
 }
 
 
@@ -48,4 +37,13 @@ function slowDFT(points, leadCoef,omega){
 	}
 
 	return ck;
+}
+
+function toPolar(z){
+	var re = math.sqrt(math.re(z)*math.re(z) + math.im(z)*math.im(z));
+	var the = math.atan2(math.im(z),math.re(z));
+
+	console.log("Leo is a" + " " + the);
+
+	return {r:re, th:the};
 }

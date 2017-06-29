@@ -2,7 +2,7 @@ var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
 function drawCircle(x, y, r, th) {
-	console.log("hi");
+	console.log("drawCircle() run on "+ x + " "+ y + " "+ r + " "+ th);
 	ctx.beginPath();
 	ctx.arc(x, y, r, 0, 2 * Math.PI, false);
 	ctx.lineWidth = 1;
@@ -19,7 +19,7 @@ function drawCircle(x, y, r, th) {
 
 function drawCircles(circles) {
 
-	console.log("here");
+	console.log("drawCircles() run");
 	//start is circles[0].r and circles[0].th;
 
 	var cir = circles[0];
