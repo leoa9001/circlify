@@ -1,7 +1,6 @@
 
 
-
-//document.getElementById("jsTestThing").innerHTML = slowDFT([math.complex(1,0),math.complex(1,0),math.complex(1,0),math.complex(1,0)] ,1 , math.complex(0,1))
+document.getElementById("jsTestThing").innerHTML = FFT([math.complex(1,0),math.complex(1,0),math.complex(1,0),math.complex(1,0)], math.complex(0,1))
 
 
 
@@ -53,19 +52,28 @@ function FFT(points, omega){
 		pts1.push(points[2*j+1]);
 	}
 
-	var ft0 = FFT(pts0,omega*omega);
-	var ft1 = FFT(pts1,omega*omega);
+	var ft0 = FFT(pts0,math.multiply(omega,omega));
+	var ft1 = FFT(pts1,math.multiply(omega,omega));
 
-	omegaCurr
+	var ft = [];
+	var omegaCurr = math.complex(1,0);
 
+	for(var k = 0; k < N/2;k++){
+		ft.push(math.add(ft0[k],math.multiply(omegaCurr,ft1[k])));
+		omegaCurr = math.multiply(omega,omegaCurr);
+	}
+	omegaCurr = math.complex(-1,0);
+
+	for(var k = 0; k < N/2;k++){
+		ft.push(math.add(ft0[k],math.multiply(omegaCurr,ft1[k])));
+		omegaCurr = math.multiply(omega,omegaCurr);
+	}
+	return ft;
 }
 
 
 function toPolar(z){
 	var re = math.sqrt(math.re(z)*math.re(z) + math.im(z)*math.im(z));
 	var the = math.atan2(math.im(z),math.re(z));
-
-	console.log("Leo is a" + " " + the);
-
 	return {r:re, th:the};
 }
