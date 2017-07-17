@@ -23,6 +23,29 @@ Given a complex number z, returns it in polar coords as a dictionary {r: radius,
 */
 
 
+function FourierComponent(points, phase){
+	this.points = points;
+	this.circles = getCircles(points);
+	this.phase = phase;
+	this.N = points.length;
+
+	this.update = function(){
+		this.phase++;
+		if(this.phase==N)this.phase = 0;
+	}
+
+	this.appendPoint = function(point){
+		this.points.push(point);
+		this.circles = getCircles(points);
+		this.N = this.points.length;
+	}
+
+	this.drawCircles = function(){
+		drawFrame(this.circles,this.phase,this.N);
+	}
+}
+
+
 
 
 function getCircles(points){
