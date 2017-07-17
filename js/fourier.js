@@ -34,21 +34,29 @@ function FourierComponent(points, phase){
 		if(this.phase==this.N)this.phase = 0;
 	}
 
+	//adds a point and then basically recalculates the whole fourier decomposition
 	this.appendPoint = function(point){
 		this.points.push(point);
 		this.circles = getCircles(points);
 		this.N = this.points.length;
 	}
 
+	//draws circles and the current point
 	this.draw = function(){
 		var currPoint = drawFrame(this.circles,this.phase,this.N);
 		drawPoint(currPoint);
 	}
 
+	//draws all points in the points array
 	this.drawPoints = function(){
 		for(var i = 0; i < points.length;i++){
 			drawPoint({x: math.re(this.points[i], y: math.im(this.points[i]))});
 		}
+	}
+
+	//setphase 
+	this.setPhase = function(p){
+		this.phase = p;
 	}
 }
 
