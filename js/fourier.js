@@ -21,17 +21,17 @@ Given a complex number z, returns it in polar coords as a dictionary {r: radius,
 
 
 */
-
-
+//points is a list of complex numbers
 function FourierComponent(points, phase){
 	this.points = points;
 	this.circles = getCircles(points);
 	this.phase = phase;
 	this.N = points.length;
 
+	//increments the phase (minimal circle rotation)
 	this.update = function(){
 		this.phase++;
-		if(this.phase==N)this.phase = 0;
+		if(this.phase==this.N)this.phase = 0;
 	}
 
 	this.appendPoint = function(point){
@@ -40,8 +40,15 @@ function FourierComponent(points, phase){
 		this.N = this.points.length;
 	}
 
-	this.drawCircles = function(){
-		drawFrame(this.circles,this.phase,this.N);
+	this.draw = function(){
+		var currPoint = drawFrame(this.circles,this.phase,this.N);
+		drawPoint(currPoint);
+	}
+
+	this.drawPoints = function(){
+		for(var i = 0; i < points.length;i++){
+			drawPoint({x: math.re(this.points[i], y: math.im(this.points[i]))});
+		}
 	}
 }
 

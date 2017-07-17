@@ -45,7 +45,18 @@ function drawFrame(circles, frame, frames){
 		startX = newX;
 		startY = newY;
 	}
-	return {x: startX, y: startY};
+	return {x: startX, y: startY};//gives point at the end <3
+}
+
+
+
+//Draws a point on the canvas where point is in x,y format.
+function drawPoint(point){
+	ctx.beginPath();
+    ctx.arc(point.x, point.y, 4, 0, 2 * Math.PI, false);
+    ctx.lineWidth = 3;
+    ctx.stroke();
+    ctx.closePath();
 }
 
 
