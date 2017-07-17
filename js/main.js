@@ -45,7 +45,7 @@ canvas.addEventListener("mousemove", function (e) {
 
 canvas.addEventListener("mousedown", function (e) {
     // console.log("mouse down");
-    clearScreen();
+    // clearScreen();
     lastPos = {x: e.clientX, y: e.clientY};
     positions.push(math.complex(e.clientX, e.clientY));
     mouseDown = true;
@@ -53,9 +53,9 @@ canvas.addEventListener("mousedown", function (e) {
 
 canvas.addEventListener("mouseup", function (e) {
     // console.log("mouse up");
+    mouseDown = false;
     fourierComponentList.push(new FourierComponent(positions, 0));
     positions = [];
-    mouseDown = false;
 }, false);
 
 canvas.addEventListener("mouseout", function (e) {
@@ -147,6 +147,8 @@ function Update() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (var i = 0; i < fourierComponentList.length; i++) {
             fourierComponentList[i].update();
+            fourierComponentList[i].draw();
+            fourierComponentList[i].drawPoints();
         }
     }
 }

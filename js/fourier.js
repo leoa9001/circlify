@@ -1,6 +1,6 @@
 
 
-document.getElementById("jsTestThing").innerHTML = FFT([math.complex(1,0),math.complex(1,0),math.complex(1,0),math.complex(1,0)], math.complex(0,1))
+// document.getElementById("jsTestThing").innerHTML = FFT([math.complex(1,0),math.complex(1,0),math.complex(1,0),math.complex(1,0)], math.complex(0,1))
 
 
 
@@ -47,7 +47,7 @@ function FourierComponent(points, phase){
 
 	this.drawPoints = function(){
 		for(var i = 0; i < points.length;i++){
-			drawPoint({x: math.re(this.points[i], y: math.im(this.points[i]))});
+			drawPoint({x: math.re(this.points[i]), y: math.im(this.points[i])});
 		}
 	}
 }
