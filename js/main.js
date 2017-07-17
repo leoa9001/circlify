@@ -16,6 +16,8 @@ var mouseY = 0;
 var lastPos = {x: 0, y: 0};
 var pos = {x: 0, y: 0};
 
+var fourierComponentList = [];
+
 var positions = [];
 var drawnPoints = [];
 
@@ -51,6 +53,8 @@ canvas.addEventListener("mousedown", function (e) {
 
 canvas.addEventListener("mouseup", function (e) {
     // console.log("mouse up");
+    fourierComponentList.push(new FourierComponent(positions, 0));
+    positions = [];
     mouseDown = false;
 }, false);
 
@@ -120,19 +124,22 @@ function Update() {
     }
 
     if (animateCircles) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        frameNum++;
-        var circles = getCircles(positions);
-        frameNum %= circles.length;
-        var lastCirclePos = drawFrame(circles, frameNum, circles.length);
-        drawnPoints.push(lastCirclePos);
+        // ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // frameNum++;
+        // var circles = getCircles(positions);
+        // frameNum %= circles.length;
+        // var lastCirclePos = drawFrame(circles, frameNum, circles.length);
+        // drawnPoints.push(lastCirclePos);
 
-        for (var i = 0; i < drawnPoints.length; i++) {
-            ctx.beginPath();
-            ctx.arc(drawnPoints[i].x, drawnPoints[i].y, 4, 0, 2 * Math.PI, false);
-            ctx.lineWidth = 3;
-            ctx.stroke();
-            ctx.closePath();
+        // for (var i = 0; i < drawnPoints.length; i++) {
+        //     ctx.beginPath();
+        //     ctx.arc(drawnPoints[i].x, drawnPoints[i].y, 4, 0, 2 * Math.PI, false);
+        //     ctx.lineWidth = 3;
+        //     ctx.stroke();
+        //     ctx.closePath();
+        // }
+        for (var i = 0; i < fourierComponentList.length; i++) {
+            fourierComponentList[i].update();
         }
     }
 }
