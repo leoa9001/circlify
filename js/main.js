@@ -98,6 +98,11 @@ function keyDownHandler(e) {
     if (e.keyCode == 65) {
         animateCircles = true;
     }
+
+    //space key?
+    if (e.keyCode == 32) {
+        animateCircles = !animateCircles;
+    }
 }
 
 function keyUpHandler(e) {
@@ -138,6 +143,8 @@ function Update() {
         //     ctx.stroke();
         //     ctx.closePath();
         // }
+
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
         for (var i = 0; i < fourierComponentList.length; i++) {
             fourierComponentList[i].update();
         }
@@ -147,6 +154,7 @@ function Update() {
 function clearScreen() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     positions = [];
+    fourierComponentList = [];
 }
 
 setInterval(Update, 1000/FPS);
