@@ -1,6 +1,10 @@
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
 
+/*
+Draws a single circle at a given x, y with radius r and a line from the center
+to the perimeter with angle th (trig angle)
+*/
 function drawCircle(x, y, r, th) {
 	console.log("drawCircle() run on "+ x + " "+ y + " "+ r + " "+ th);
 	ctx.beginPath();
@@ -17,6 +21,10 @@ function drawCircle(x, y, r, th) {
     ctx.closePath();
 }
 
+/*
+Given a list of objects with r and th properties, draws a circle for each
+r and th, starting at startX and startY
+*/
 function drawCircles(circles) {
 
 	console.log("drawCircles() run");
@@ -40,7 +48,13 @@ function drawCircles(circles) {
 }
 
 
-//frame is the ith output... out of frames: frames = number of divisions of time for one rotation of C_1
+/*
+basically drawCircles except at various points in time rather 
+than just the first frame
+
+frame is the ith output... out of frames: 
+frames = number of divisions of time for one rotation of C_1
+*/
 function drawFrame(circles, frame, frames){
 	var cir = circles[0];
 	var startX = cir.r * Math.cos(cir.th);
@@ -60,6 +74,13 @@ function drawFrame(circles, frame, frames){
 	return {x: startX, y: startY};
 }
 
-// function drawCircle(x, y, [[r, th], [r, th]]);
 
-[{r: 0.5, th: 72}, {r: 0.6, th: 33}];
+
+
+
+
+
+
+
+
+
