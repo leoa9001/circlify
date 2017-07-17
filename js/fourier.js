@@ -5,6 +5,25 @@ document.getElementById("jsTestThing").innerHTML = FFT([math.complex(1,0),math.c
 
 
 
+/*
+getCircles(points): 
+Given a list of points (as a list of complex numbers) it returns a list of tuples representing the circle for the fourier transform (as (r,theta) pairs).
+
+slowDFT(points, leadCoef, omega): 
+takes in a list of points (complex numbers), a leadCoefficient for the sum (typically 1/N) and omega a primitive Nth root of unity (can change sign accordingly to do things like IFFTs) and outputs the complex number list that is
+the discrete fourier transform of the points.
+
+FFT(points, omega):
+Recursively does FFT on points list with respect to primitive Nth root of unity omega: multiplies by no lead coefficient! Just evaluates the sum formula (this is done since the function calls itself for the recursion; no helper function).
+
+toPolar(z): 
+Given a complex number z, returns it in polar coords as a dictionary {r: radius, th: theta}.
+
+
+*/
+
+
+
 
 function getCircles(points){
 	//we're using omega = e^2pi i/N rather than e^-pi i/N and taking 1/N 
