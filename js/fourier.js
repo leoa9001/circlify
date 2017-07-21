@@ -28,9 +28,12 @@ function FourierComponent(points, phase){
 	this.phase = phase;
 	this.N = points.length;
 
+	//helper vars
+	this.freezePhase = false;
+
 	//increments the phase (minimal circle rotation)
 	this.update = function(){
-		this.phase++;
+		if(!this.freezePhase)this.phase++;
 		if(this.phase==this.N)this.phase = 0;
 	}
 
@@ -57,6 +60,11 @@ function FourierComponent(points, phase){
 	//setphase 
 	this.setPhase = function(p){
 		this.phase = p;
+	}
+
+	//change freeze 
+	this.toggleFreeze = function(){
+		this.freezePhase = !this.freezePhase;
 	}
 }
 

@@ -118,6 +118,11 @@ function keyDownHandler(e) {
     if (e.keyCode == 32) {
         animateCircles = !animateCircles;
     }
+
+    //f key for freeze toggle
+    if(e.keyCode == 70){
+        toggleFreezes();
+    }
 }
 
 function keyUpHandler(e) {
@@ -163,6 +168,12 @@ function clearScreen() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     positions = [];
     fourierComponentList = [];
+}
+
+function toggleFreezes(){
+    for(var i = 0; i < fourierComponentList.length;i++){
+        fourierComponentList[i].toggleFreeze();
+    }
 }
 
 setInterval(Update, 1000/FPS);
