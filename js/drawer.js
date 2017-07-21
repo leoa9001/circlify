@@ -6,7 +6,7 @@ Draws a single circle at a given x, y with radius r and a line from the center
 to the perimeter with angle th (trig angle)
 */
 function drawCircle(x, y, r, th) {
-	console.log("drawCircle() run on "+ x + " "+ y + " "+ r + " "+ th);
+	//console.log("drawCircle() run on "+ x + " "+ y + " "+ r + " "+ th);
 	ctx.beginPath();
 	ctx.arc(x, y, r, 0, 2 * Math.PI, false);
 	ctx.lineWidth = 1;
@@ -37,7 +37,7 @@ function drawFrame(circles, frame, frames){
 
 	for (var i = 1; i < circles.length; i++) {
 		var c = circles[i];
-		console.log(c.r + " " + c.th);
+		//console.log(c.r + " " + c.th);
 		drawCircle(startX, startY, c.r, c.th-2*math.pi*i*frame/frames);
 
 		var newX = startX + c.r * Math.cos(c.th-2*math.pi*i*frame/frames);
