@@ -123,6 +123,11 @@ function keyDownHandler(e) {
     if(e.keyCode == 70){
         toggleFreezes();
     }
+
+    //s key for sync
+    if(e.keyCode == 83){
+        orientPhases();
+    }
 }
 
 function keyUpHandler(e) {
@@ -170,9 +175,17 @@ function clearScreen() {
     fourierComponentList = [];
 }
 
+//switch whether toggling or not
 function toggleFreezes(){
     for(var i = 0; i < fourierComponentList.length;i++){
         fourierComponentList[i].toggleFreeze();
+    }
+}
+
+//set all phases to 0
+function orientPhases(){
+    for(var i = 0; i < fourierComponentList.length;i++){
+        fourierComponentList[i].setPhase(0);
     }
 }
 
