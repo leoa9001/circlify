@@ -66,6 +66,13 @@ function FourierComponent(points, phase){
 	this.toggleFreeze = function(){
 		this.freezePhase = !this.freezePhase;
 	}
+
+	//translate function for dragging components t is the amount to translate by. 
+	this.translate = function(t){
+		c = fromPolar(circles[0]);
+		c = math.add(c,t);
+		circles[0] = toPolar(c);
+	}
 }
 
 
@@ -78,7 +85,7 @@ function getCircles(points){
 
 	for(var i = 0; i < points.length;i++){
 		var pti = toPolar(fourierDecomp[i]);
-		circles.push({r:pti.r, th:pti.th});
+		circles.push({r:pti.r, th:pti.th}); //this is perhaps unnecessary but idk how objects passing works in js
 	}
 
 	return circles;
@@ -141,4 +148,11 @@ function toPolar(z){
 	var re = math.sqrt(math.re(z)*math.re(z) + math.im(z)*math.im(z));
 	var the = math.atan2(math.im(z),math.re(z));
 	return {r:re, th:the};
+}
+
+function fromPolar(v){
+	var x = v.r * math.cos(v.th);
+	var y = v.r * math.cos(v.th);
+
+	return math.complex(x,y);
 }
