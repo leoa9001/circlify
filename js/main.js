@@ -42,9 +42,6 @@ canvas.addEventListener("mousemove", function (e) {
 }, false);
 
 canvas.addEventListener("mousedown", function (e) {
-
-
-
     lastPos = {x: e.clientX, y: e.clientY};
 
 
@@ -127,6 +124,13 @@ function keyDownHandler(e) {
     //s key for sync
     if(e.keyCode == 83){
         orientPhases();
+    }
+
+    //t key for test code to run: put anything you want to test in here.
+    if(e.keyCode==84){
+        fc = fourierComponentList[fourierComponentList.length-1];
+        fc.translate(math.complex(5,5));
+        console.log("Teeteesb");
     }
 }
 

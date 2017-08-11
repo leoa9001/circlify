@@ -69,9 +69,9 @@ function FourierComponent(points, phase){
 
 	//translate function for dragging components t is the amount to translate by. 
 	this.translate = function(t){
-		c = fromPolar(circles[0]);
+		c = fromPolar(this.circles[0]);
 		c = math.add(c,t);
-		circles[0] = toPolar(c);
+		this.circles[0] = toPolar(c);
 	}
 }
 
@@ -152,7 +152,7 @@ function toPolar(z){
 
 function fromPolar(v){
 	var x = v.r * math.cos(v.th);
-	var y = v.r * math.cos(v.th);
+	var y = v.r * math.sin(v.th);
 
 	return math.complex(x,y);
 }
