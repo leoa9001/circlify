@@ -72,6 +72,10 @@ function FourierComponent(points, phase){
 		c = fromPolar(this.circles[0]);
 		c = math.add(c,t);
 		this.circles[0] = toPolar(c);
+
+		for(var i = 0; i < this.N;i++){
+			this.points[i] = math.add(this.points[i],t);
+		}
 	}
 }
 

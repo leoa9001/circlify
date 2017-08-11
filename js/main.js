@@ -132,6 +132,26 @@ function keyDownHandler(e) {
         fc.translate(math.complex(5,5));
         console.log("Teeteesb");
     }
+
+    if(e.keyCode == 38){
+        fc = fourierComponentList[fourierComponentList.length-1];
+        fc.translate(math.complex(0,-5));
+    }
+
+    if(e.keyCode == 40){
+        fc = fourierComponentList[fourierComponentList.length-1];
+        fc.translate(math.complex(0,5));
+    }
+
+    if(e.keyCode == 37){
+        fc = fourierComponentList[fourierComponentList.length-1];
+        fc.translate(math.complex(-5,0));
+    }
+
+    if(e.keyCode == 39){
+        fc = fourierComponentList[fourierComponentList.length-1];
+        fc.translate(math.complex(5,0));
+    }
 }
 
 function keyUpHandler(e) {
