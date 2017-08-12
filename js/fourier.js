@@ -69,13 +69,24 @@ function FourierComponent(points, phase){
 
 	//translate function for dragging components t is the amount to translate by. 
 	this.translate = function(t){
-		c = fromPolar(this.circles[0]);
+		var c = fromPolar(this.circles[0]);
 		c = math.add(c,t);
 		this.circles[0] = toPolar(c);
 
 		for(var i = 0; i < this.N;i++){
 			this.points[i] = math.add(this.points[i],t);
 		}
+	}
+
+	//Norm DOES NOT agree with norm of points vector (it should be ~sqrt(N)*norm of points vector)
+	this.norm = function(){
+		var sum = 0;
+		for(var i = 0; i < this.N;i++){
+			var r = this.circles[i].r;
+			sum += r*r;
+		}
+
+		return sum;
 	}
 }
 
