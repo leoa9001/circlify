@@ -75,7 +75,7 @@ function FourierComponent(elements, phase, form){
 		this.freezePhase = !this.freezePhase;
 	}
 
-	//translate function for dragging components t is the amount to translate by. 
+	//translate function for dragging components t (cx number) is the amount to translate by. 
 	this.translate = function(t){
 		var c = fromPolar(this.circles[0]);
 		c = math.add(c,t);
@@ -92,10 +92,10 @@ function FourierComponent(elements, phase, form){
 		for(var i = 0; i < this.N;i++){
 			var r = this.circles[i].r;
 			//console.log(r);
-			sum += (math.sqrt(this.N)*r)*r;
+			sum += (this.N*r)*r;
 		}
 
-		return math.sqrt(this.N)*sum;
+		return math.sqrt(sum);
 	}
 }
 
