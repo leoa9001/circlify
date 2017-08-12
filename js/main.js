@@ -18,8 +18,8 @@ var pos = {x: 0, y: 0};
 
 var fourierComponentList = [];
 
-var positions = [];
-var currComponent;
+var positions = []; //used when not animating
+var currComponent; //used when animating < should really absorb positions into this though (although it is slower)
 
 var animateCircles = false;
 var frameNum = -1;
@@ -52,7 +52,7 @@ canvas.addEventListener("mousedown", function (e) {
         console.log(fourierComponentList.length);
         pos = [];
         pos.push(math.complex(e.clientX,e.clientY));
-        currComponent = new FourierComponent(pos,0);
+        currComponent = new FourierComponent(pos,0,"points");
         fourierComponentList.push(currComponent);
     }
 
@@ -65,7 +65,7 @@ canvas.addEventListener("mouseup", function (e) {
 
 
     if(!animateCircles){
-        fourierComponentList.push(new FourierComponent(positions, 0));
+        fourierComponentList.push(new FourierComponent(positions, 0,"points"));
     }
     positions = [];
 }, false);
@@ -104,11 +104,6 @@ function keyDownHandler(e) {
     if (e.keyCode == 69) {
         var circles = getCircles(positions);
         drawCircles(circles);
-    }
-
-    //65 is a
-    if (e.keyCode == 65) {
-        animateCircles = true;
     }
 
     //space key?

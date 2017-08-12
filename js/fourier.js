@@ -21,12 +21,20 @@ Given a complex number z, returns it in polar coords as a dictionary {r: radius,
 
 
 */
-//points is a list of complex numbers
-function FourierComponent(points, phase){
-	this.points = points;
-	this.circles = getCircles(points);
+//points is a list of complex numbers //note that elements is NOT cloned.
+function FourierComponent(elements, phase, form){
+	this.points;
+	this.circles;
+	if(form=="points"){
+		this.points = elements;
+		this.circles = getCircles(this.points);
+	}else if(form=="circles"){
+		this.circles = elements;
+		this.points = getPoints(this.circles);
+	}
+
 	this.phase = phase;
-	this.N = points.length;
+	this.N = this.points.length;
 
 	//helper vars
 	this.freezePhase = false;
@@ -40,7 +48,7 @@ function FourierComponent(points, phase){
 	//adds a point and then basically recalculates the whole fourier decomposition
 	this.appendPoint = function(point){
 		this.points.push(point);
-		this.circles = getCircles(points);
+		this.circles = getCircles(this.points);
 		this.N = this.points.length;
 	}
 
@@ -52,7 +60,7 @@ function FourierComponent(points, phase){
 
 	//draws all points in the points array
 	this.drawPoints = function(){
-		for(var i = 0; i < points.length;i++){
+		for(var i = 0; i < this.N; i++){
 			drawPoint({x: math.re(this.points[i]), y: math.im(this.points[i])});
 		}
 	}
@@ -105,6 +113,17 @@ function getCircles(points){
 	}
 
 	return circles;
+}
+
+function getPoints(circles){
+	var cxCircles = [];
+	for(var j = 0; j < circles.length; j++){
+		cxCircles.push(fromPolar(circles[i]));
+	}
+
+	var points = slowDFT(cxCircles, 1, math.pow(math.e,math.complex(0,-2*math.pi/points.length)));
+
+	return points;
 }
 
 //General n^2 time DFT which works for any n.
