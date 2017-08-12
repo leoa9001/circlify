@@ -78,15 +78,16 @@ function FourierComponent(points, phase){
 		}
 	}
 
-	//Norm DOES NOT agree with norm of points vector (it should be ~sqrt(N)*norm of points vector)
+	//Norm should agree with point norm (up to those fun issues :p)
 	this.norm = function(){
 		var sum = 0;
 		for(var i = 0; i < this.N;i++){
 			var r = this.circles[i].r;
-			sum += r*r;
+			//console.log(r);
+			sum += (math.sqrt(this.N)*r)*r;
 		}
 
-		return sum;
+		return math.sqrt(this.N)*sum;
 	}
 }
 

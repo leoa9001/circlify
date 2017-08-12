@@ -129,8 +129,7 @@ function keyDownHandler(e) {
     //t key for test code to run: put anything you want to test in here.
     if(e.keyCode==84){
         fc = fourierComponentList[fourierComponentList.length-1];
-        fc.translate(math.complex(5,5));
-        console.log("Teeteesb");
+        document.getElementById("test").innerHTML = " "+fc.norm();
     }
 
     if(e.keyCode == 38){
