@@ -123,6 +123,7 @@ function keyDownHandler(e) {
     //t key for test code to run: put anything you want to test in here.
     if(e.keyCode==84){
         document.getElementById("test").innerHTML = " "+currComponent.norm();
+        addComponent(cutByM(currComponent, Math.floor(1*currComponent.N/10)));
     }
 
     if(e.keyCode == 38){

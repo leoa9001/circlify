@@ -120,10 +120,10 @@ function getCircles(points){
 function getPoints(circles){
 	var cxCircles = [];
 	for(var j = 0; j < circles.length; j++){
-		cxCircles.push(fromPolar(circles[i]));
+		cxCircles.push(fromPolar(circles[j]));
 	}
 
-	var points = slowDFT(cxCircles, 1, math.pow(math.e,math.complex(0,-2*math.pi/points.length)));
+	var points = slowDFT(cxCircles, 1, math.pow(math.e,math.complex(0,-2*math.pi/cxCircles.length)));
 
 	return points;
 }
