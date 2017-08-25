@@ -31,6 +31,8 @@ function FourierComponent(elements, phase, form){
 	}else if(form=="circles"){
 		this.circles = elements;
 		this.points = getPoints(this.circles);
+	} else{
+		console.log("Fourier Component initialization error. Need to specify \"points\" form or \"circles\" form.");
 	}
 
 	this.phase = phase;

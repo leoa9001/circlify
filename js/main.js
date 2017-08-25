@@ -52,8 +52,7 @@ canvas.addEventListener("mousedown", function (e) {
         console.log(fourierComponentList.length);
         pos = [];
         pos.push(math.complex(e.clientX,e.clientY));
-        currComponent = new FourierComponent(pos,0,"points");
-        fourierComponentList.push(currComponent);
+        addComponent(new FourierComponent(pos,0,"points"));
     }
 
     mouseDown = true;
@@ -65,7 +64,7 @@ canvas.addEventListener("mouseup", function (e) {
 
 
     if(!animateCircles){
-        fourierComponentList.push(new FourierComponent(positions, 0,"points"));
+        addComponent(new FourierComponent(positions, 0,"points"));
     }
     positions = [];
 }, false);
@@ -123,28 +122,23 @@ function keyDownHandler(e) {
 
     //t key for test code to run: put anything you want to test in here.
     if(e.keyCode==84){
-        fc = fourierComponentList[fourierComponentList.length-1];
-        document.getElementById("test").innerHTML = " "+fc.norm();
+        document.getElementById("test").innerHTML = " "+currComponent.norm();
     }
 
     if(e.keyCode == 38){
-        fc = fourierComponentList[fourierComponentList.length-1];
-        fc.translate(math.complex(0,-5));
+        currComponent.translate(math.complex(0,-5));
     }
 
     if(e.keyCode == 40){
-        fc = fourierComponentList[fourierComponentList.length-1];
-        fc.translate(math.complex(0,5));
+        currComponent.translate(math.complex(0,5));
     }
 
     if(e.keyCode == 37){
-        fc = fourierComponentList[fourierComponentList.length-1];
-        fc.translate(math.complex(-5,0));
+        currComponent.translate(math.complex(-5,0));
     }
 
     if(e.keyCode == 39){
-        fc = fourierComponentList[fourierComponentList.length-1];
-        fc.translate(math.complex(5,0));
+        currComponent.translate(math.complex(5,0));
     }
 }
 
@@ -206,5 +200,22 @@ function orientPhases(){
         fourierComponentList[i].setPhase(0);
     }
 }
+
+//formal way to add fourierComponents (will change the )
+function addComponent(fc){
+    currComponent = fc;
+    fourierComponentList.push(fc);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 setInterval(Update, 1000/FPS);
