@@ -21,14 +21,8 @@ function cutByM(fc, M){
 	
 	var zeroCirc = {r: 0, th :0};// set other circles to zeroCirc
 	//eliminating N-M least significant parts.
-	// for(var j = 0; j < N; j++){
-	// 	console.log();
-	// }
-	console.log("STARTING NOW "+ M );
-	console.log("WOOP : " + N);
 	for(var j = 0; j < N-M; j++){
 		preCirc[refCirc[j].index] = zeroCirc;
-		//console.log(refCirc[j].index+" "+refCirc[j].radius);
 	}
 
 
